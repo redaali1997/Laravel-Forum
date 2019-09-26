@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Discussion;
 use App\Http\Requests\CreateDiscussionRequest;
+use App\Notifications\BestReply;
 use App\Reply;
 use Illuminate\Http\Request;
 
@@ -108,6 +109,8 @@ class DiscussionsController extends Controller
         $discussion->update([
             'reply_id' => $reply->id,
         ]);
+
+        $reply->user->notify(new BestReply($reply->discussion));
 
         session()->flash('success', 'Reply marked as best.');
 
