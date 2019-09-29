@@ -7,7 +7,7 @@ use Illuminate\Notifications\Notification;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 
-class ReplyAdded extends Notification
+class ReplyAdded extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -31,7 +31,7 @@ class ReplyAdded extends Notification
      */
     public function via($notifiable)
     {
-        return ['mail', 'database'];
+        return ['database'];
     }
 
     /**

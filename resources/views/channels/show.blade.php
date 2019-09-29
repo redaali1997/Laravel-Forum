@@ -3,7 +3,7 @@
 @section('content')
 <h1>{{ $channel->name }} Channel</h1>
 @if ($channel->discussions->count() > 0)
-@foreach ($channel->discussions as $dis)
+@foreach ($channel->discussions()->paginate(3) as $dis)
 <div class="card">
     <div class="card-header">
         <div class="d-flex justify-content-between">
@@ -21,6 +21,7 @@
     </div>
 </div>
 @endforeach
+{{ $channel->discussions()->paginate(3)->links() }}
 @else
 <div class="card">
     <div class="card-header text-center"></div>

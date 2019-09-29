@@ -16,8 +16,8 @@
         {{ $discussion->title }}
         <hr>
         {!! $discussion->content !!}
-        <hr>
         {{-- Best Reply --}}
+        @if ($discussion->bestReply)
         <div class="card bg-success" style="color:aliceblue">
             <div class="card-header">
                 <div class="d-flex justify-content-between">
@@ -35,6 +35,7 @@
                 {!! $discussion->bestReply->content !!}
             </div>
         </div>
+        @endif
     </div>
 </div>
 {{-- Replies --}}

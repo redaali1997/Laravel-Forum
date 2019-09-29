@@ -24,7 +24,7 @@ class DiscussionsController extends Controller
     public function index()
     {
         return view('discussions.index',[
-            'discussions' => Discussion::all(),
+            'discussions' => Discussion::paginate(3),
         ]);
     }
 
